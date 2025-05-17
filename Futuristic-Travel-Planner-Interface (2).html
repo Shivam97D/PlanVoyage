@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> PlanVoyage </title>
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script>tailwind.config = { theme: { extend: { colors: { primary: '#8A7FF0', secondary: '#7FFFD4' }, borderRadius: { 'none': '0px', 'sm': '4px', DEFAULT: '8px', 'md': '12px', 'lg': '16px', 'xl': '20px', '2xl': '24px', '3xl': '32px', 'full': '9999px', 'button': '8px' } } } }</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="glassmorphism fixed top-0 left-0 right-0 z-50 px-6 py-4">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <a href="#" class="text-2xl font-['Pacifico'] text-primary">PlanVoyage</a>
+      <div class="hidden md:flex space-x-8">
+        <a href="#home" class="text-gray-700 hover:text-primary transition-colors">Home</a>
+        <a href="#next-plan" class="text-gray-700 hover:text-primary transition-colors">Destinations</a>
+        <a href="#plan" class="text-gray-700 hover:text-primary transition-colors">Planner</a>
+        <a href="#price" class="text-gray-700 hover:text-primary transition-colors">Pricing</a>
+      </div>
+      <div class="flex items-center space-x-4">
+        <button
+          class="hidden md:block px-6 py-2 text-white bg-primary hover:bg-opacity-90 transition-colors !rounded-button whitespace-nowrap">Sign
+          Up</button>
+        <button class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700">
+          <i class="ri-menu-line ri-lg"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <!-- Hero Section -->
+  <section id="home" class="relative min-h-screen pt-24 pb-16 overflow-hidden flex items-center"
+    style="background-image: url('./public/bg.jpg'); background-size: cover; background-position: center;">
+    <div class="absolute inset-0 bg-black bg-opacity-30"></div>
+    <div class="relative max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center">
+      <div class="w-full md:w-1/2 text-center md:text-left mb-12 md:mb-0" id="hero-content">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">Plan Your <span
+            class="gradient-text">Dream Journey</span></h1>
+        <p class="text-lg text-white mb-8 max-w-lg">Create personalized travel itineraries with our intuitive planner.
+          Organize your adventures day by day, with smart recommendations.</p>
+        <div class="relative max-w-md w-full mx-auto md:mx-0">
+          <input type="text" placeholder="Where do you want to go?"
+            class="w-full py-4 px-6 pr-12 search-input rounded-full text-gray-700">
+          <button
+            class=" serchbut absolute right-2 top-2 w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center  whitespace-nowrap">
+            <i class="ri-search-line ri-lg"></i>
+          </button>
+        </div>
+      </div>
+      <div class="w-full md:w-1/2 relative h-[300px] md:h-[400px]">
+        <div class="absolute inset-0 grid grid-cols-2 gap-4 p-8">
+          <div class="relative">
+            <img
+              src="./public/bag.jpg"
+              alt="Travel Bag" class="w-full h-full object-contain">
+          </div>
+          <div class="relative">
+            <img
+              src="./public/lunch.jpg"
+              alt="Water Bottle" class="w-full h-full object-contain">
+          </div>
+          <div class="relative">
+            <img
+              src="./public/bottle.jpg"
+              alt="Lunch Box" class="w-full h-full object-contain">
+          </div>
+          <div class="relative">
+            <img
+              src="./public/diary.jpg"
+              alt="Passport Holder" class="w-full h-full object-contain">
+          </div>
+        </div>
+        <div class="absolute top-[20%] left-[20%] floating floating-delay-1">
+          <div class="w-12 h-12 bg-white bg-opacity-80 rounded-full flex items-center justify-center shadow-lg">
+            <i class="ri-plane-line ri-lg text-primary"></i>
+          </div>
+        </div>
+        <div class="absolute top-[60%] left-[70%] floating floating-delay-2">
+          <div class="w-12 h-12 bg-white bg-opacity-80 rounded-full flex items-center justify-center shadow-lg">
+            <i class="ri-camera-line ri-lg text-primary"></i>
+          </div>
+        </div>
+        <div class="absolute top-[30%] left-[60%] floating floating-delay-3">
+          <div class="w-12 h-12 bg-white bg-opacity-80 rounded-full flex items-center justify-center shadow-lg">
+            <i class="ri-compass-3-line ri-lg text-primary"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Trip Countdown Section -->
+  <section id="next-plan" class="min-h-screen py-16 px-6 flex items-center">
+    <div class="max-w-7xl w-full mx-auto">
+      <div class="text-center mb-12 px-4">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Your Next Adventure</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">Track the countdown to your upcoming trips and make sure you're
+          prepared for every moment.</p>
+      </div>
+      <div class="countdown-card rounded-xl p-6 md:p-8 max-w-4xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-center mb-6">
+          <div>
+            <h3 class="text-xl font-semibold text-gray-800">Bali Adventure</h3>
+            <p class="text-gray-600">May 25 - June 7, 2025</p>
+          </div>
+          <div class="mt-4 md:mt-0 flex items-center">
+            <span class="text-gray-600 mr-2">Trip Status:</span>
+            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">Confirmed</span>
+          </div>
+        </div>
+        <div class="grid grid-cols-4 gap-4 mb-8">
+          <div class="text-center">
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front bg-gray-100 rounded-lg p-4">
+                  <span id="days" class="block text-3xl md:text-4xl font-bold text-primary">08</span>
+                  <span class="text-gray-600 text-sm">Days</span>
+                </div>
+                <div class="flip-card-back bg-primary rounded-lg p-4">
+                  <span id="days" class="block text-3xl md:text-4xl font-bold text-white">08</span>
+                  <span class="text-white text-sm">Days</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-center">
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front bg-gray-100 rounded-lg p-4">
+                  <span id="hours" class="block text-3xl md:text-4xl font-bold text-primary">14</span>
+                  <span class="text-gray-600 text-sm">Hours</span>
+                </div>
+                <div class="flip-card-back bg-primary rounded-lg p-4">
+                  <span id="hours" class="block text-3xl md:text-4xl font-bold text-white">14</span>
+                  <span class="text-white text-sm">Hours</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-center">
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front bg-gray-100 rounded-lg p-4">
+                  <span id="minutes" class="block text-3xl md:text-4xl font-bold text-primary">36</span>
+                  <span class="text-gray-600 text-sm">Minutes</span>
+                </div>
+                <div class="flip-card-back bg-primary rounded-lg p-4">
+                  <span id="minutes" class="block text-3xl md:text-4xl font-bold text-white">36</span>
+                  <span class="text-white text-sm">Minutes</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-center">
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front bg-gray-100 rounded-lg p-4">
+                  <span id="seconds" class="block text-3xl md:text-4xl font-bold text-primary">52</span>
+                  <span class="text-gray-600 text-sm">Seconds</span>
+                </div>
+                <div class="flip-card-back bg-primary rounded-lg p-4">
+                  <span id="seconds" class="block text-3xl md:text-4xl font-bold text-white">52</span>
+                  <span class="text-white text-sm">Seconds</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      
+
+        <div class="mb-4">
+          <div class="flex justify-between text-sm text-gray-600 mb-2">
+            <span>Preparation Progress</span>
+            <span>65%</span>
+          </div>
+          <div class="w-full h-6 bg-gray-100 rounded-full overflow-hidden">
+            <div class="progress-bar" style="width: 65%"></div>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <button
+            class="flex items-center px-4 py-2 bg-primary text-white rounded-full !rounded-button whitespace-nowrap">
+            <i class="ri-edit-line mr-2"></i>
+            Edit Trip
+          </button>
+          <button
+            class="flex items-center px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-full !rounded-button whitespace-nowrap">
+            <i class="ri-share-line mr-2"></i>
+            Share
+          </button>
+          <button
+            class="flex items-center px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-full !rounded-button whitespace-nowrap">
+            <i class="ri-checkbox-circle-line mr-2"></i>
+            Checklist
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Daily Planner Section -->
+  <section id="plan" class="min-h-screen py-16 px-6 bg-gray-50 flex items-center">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex justify-between items-center mb-8">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold mb-2">Daily Planner</h2>
+          <p class="text-gray-600">Organize your trip day by day with our interactive planner</p>
+        </div>
+        <div class="flex items-center space-x-4">
+          <button
+            class="hidden md:flex items-center px-4 py-2 bg-primary text-white rounded-full !rounded-button whitespace-nowrap">
+            <i class="ri-add-line mr-2"></i>
+            Add Day
+          </button>
+          <button
+            class="w-10 h-10 flex items-center justify-center bg-white border border-gray-300 rounded-full md:hidden">
+            <i class="ri-add-line ri-lg text-primary"></i>
+          </button>
+          <div class="relative">
+            <button class="w-10 h-10 flex items-center justify-center bg-white border border-gray-300 rounded-full">
+              <i class="ri-more-2-fill ri-lg text-gray-600"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="mb-8">
+        <div class="flex overflow-x-auto pb-4 space-x-2 scrollbar-hide">
+          <button
+            class="px-4 py-2 bg-primary text-white rounded-full flex-shrink-0 !rounded-button whitespace-nowrap">All
+            Days</button>
+          <button
+            class="px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-full flex-shrink-0 !rounded-button whitespace-nowrap">Day
+            1</button>
+          <button
+            class="px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-full flex-shrink-0 !rounded-button whitespace-nowrap">Day
+            2</button>
+          <button
+            class="px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-full flex-shrink-0 !rounded-button whitespace-nowrap">Day
+            3</button>
+          <button
+            class="px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-full flex-shrink-0 !rounded-button whitespace-nowrap">Day
+            4</button>
+          <button
+            class="px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-full flex-shrink-0 !rounded-button whitespace-nowrap">Day
+            5</button>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
+        <!-- Card 1 -->
+        <div class="planner-card rounded-xl overflow-hidden w-full">
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <h3 class="text-lg font-semibold">Morning Adventure</h3>
+                <div class="flex items-center text-gray-600 mt-1">
+                  <i class="ri-time-line mr-2"></i>
+                  <input type="time" value="08:30" class="time-input text-gray-700 border-none">
+                </div>
+              </div>
+              <div class="flex space-x-2">
+                <button class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full">
+                  <i class="ri-drag-move-line text-gray-600"></i>
+                </button>
+                <div class="relative">
+                  <button class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full emoji-toggle">
+                    <i class="ri-emotion-happy-line text-gray-600"></i>
+                  </button>
+                  <div class="emoji-picker hidden">
+                    <button class="emoji-btn">😊</button>
+                    <button class="emoji-btn">🌴</button>
+                    <button class="emoji-btn">🏖️</button>
+                    <button class="emoji-btn">🍹</button>
+                    <button class="emoji-btn">🏄</button>
+                    <button class="emoji-btn">🚶</button>
+                    <button class="emoji-btn">🍽️</button>
+                    <button class="emoji-btn">🛌</button>
+                    <button class="emoji-btn">🚗</button>
+                    <button class="emoji-btn">📸</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <div class="flex items-center mb-2">
+                <i class="ri-map-pin-line mr-2 text-primary"></i>
+                <span class="text-gray-700">Ubud Monkey Forest</span>
+              </div>
+              <textarea placeholder="Add notes here..."
+                class="w-full h-24 p-3 bg-gray-50 border-none rounded text-gray-700 resize-none focus:ring-2 focus:ring-primary focus:outline-none">Visit the sacred monkey forest sanctuary early in the morning to avoid crowds. Remember to bring bananas and keep valuables secure.</textarea>
+            </div>
+            <div class="flex justify-between items-center">
+              <div class="flex items-center">
+                <label class="custom-switch mr-3">
+                  <input type="checkbox" checked>
+                  <span class="slider"></span>
+                </label>
+                <span class="text-sm text-gray-600">Reminder</span>
+              </div>
+              <div class="flex space-x-2">
+                <button class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full">
+                  <i class="ri-attachment-2 text-gray-600"></i>
+                </button>
+                <button class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full">
+                  <i class="ri-delete-bin-line text-gray-600"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="planner-card rounded-xl overflow-hidden w-full">
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <h3 class="text-lg font-semibold">Lunch Break</h3>
+                <div class="flex items-center text-gray-600 mt-1">
+                  <i class="ri-time-line mr-2"></i>
+                  <input type="time" value="12:45" class="time-input text-gray-700 border-none">
+                </div>
+              </div>
+              <div class="flex space-x-2">
+                <button class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full">
+                  <i class="ri-drag-move-line text-gray-600"></i>
+                </button>
+                <div class="relative">
+                  <button class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full emoji-toggle">
+                    <i class="ri-emotion-happy-line text-gray-600"></i>
+                  </button>
+                  <div class="emoji-picker hidden">
+                    <button class="emoji-btn">😊</button>
+                    <button class="emoji-btn">🌴</button>
+                    <button class="emoji-btn">🏖️</button>
+                    <button class="emoji-btn">🍹</button>
+                    <button class="emoji-btn">🏄</button>
+                    <button class="emoji-btn">🚶</button>
+                    <button class="emoji-btn">🍽️</button>
+                    <button class="emoji-btn">🛌</button>
+                    <button class="emoji-btn">🚗</button>
+                    <button class="emoji-btn">📸</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <div class="flex items-center mb-2">
+                <i class="ri-map-pin-line mr-2 text-primary"></i>
+                <span class="text-gray-700">Warung Biah Biah</span>
+              </div>
+              <textarea placeholder="Add notes here..."
+                class="w-full h-24 p-3 bg-gray-50 border-none rounded text-gray-700 resize-none focus:ring-2 focus:ring-primary focus:outline-none">Try the local Balinese cuisine. Must order: Nasi Campur and fresh coconut water. Restaurant has vegetarian options available.</textarea>
+            </div>
+            <div class="flex justify-between items-center">
+              <div class="flex items-center">
+                <label class="custom-switch mr-3">
+                  <input type="checkbox">
+                  <span class="slider"></span>
+                </label>
+                <span class="text-sm text-gray-600">Reminder</span>
+              </div>
+              <div class="flex space-x-2">
+                <button class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full">
+                  <i class="ri-attachment-2 text-gray-600"></i>
+                </button>
+                <button class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full">
+                  <i class="ri-delete-bin-line text-gray-600"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="planner-card rounded-xl overflow-hidden w-full">
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <h3 class="text-lg font-semibold">Afternoon Relaxation</h3>
+                <div class="flex items-center text-gray-600 mt-1">
+                  <i class="ri-time-line mr-2"></i>
+                  <input type="time" value="15:00" class="time-input text-gray-700 border-none">
+                </div>
+              </div>
+              <div class="flex space-x-2">
+                <button class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full">
+                  <i class="ri-drag-move-line text-gray-600"></i>
+                </button>
+                <div class="relative">
+                  <button class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full emoji-toggle">
+                    <i class="ri-emotion-happy-line text-gray-600"></i>
+                  </button>
+                  <div class="emoji-picker hidden">
+                    <button class="emoji-btn">😊</button>
+                    <button class="emoji-btn">🌴</button>
+                    <button class="emoji-btn">🏖️</button>
+                    <button class="emoji-btn">🍹</button>
+                    <button class="emoji-btn">🏄</button>
+                    <button class="emoji-btn">🚶</button>
+                    <button class="emoji-btn">🍽️</button>
+                    <button class="emoji-btn">🛌</button>
+                    <button class="emoji-btn">🚗</button>
+                    <button class="emoji-btn">📸</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <div class="flex items-center mb-2">
+                <i class="ri-map-pin-line mr-2 text-primary"></i>
+                <span class="text-gray-700">Karsa Spa</span>
+              </div>
+              <textarea placeholder="Add notes here..."
+                class="w-full h-24 p-3 bg-gray-50 border-none rounded text-gray-700 resize-none focus:ring-2 focus:ring-primary focus:outline-none">Booked a 90-minute traditional Balinese massage. Arrive 15 minutes early to enjoy welcome drink and foot bath ritual. Bring swimwear for the pool.</textarea>
+            </div>
+            <div class="flex justify-between items-center">
+              <div class="flex items-center">
+                <label class="custom-switch mr-3">
+                  <input type="checkbox" checked>
+                  <span class="slider"></span>
+                </label>
+                <span class="text-sm text-gray-600">Reminder</span>
+              </div>
+              <div class="flex space-x-2">
+                <button class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full">
+                  <i class="ri-attachment-2 text-gray-600"></i>
+                </button>
+                <button class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full">
+                  <i class="ri-delete-bin-line text-gray-600"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="planner-card rounded-xl overflow-hidden w-full">
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <h3 class="text-lg font-semibold">Sunset Experience</h3>
+                <div class="flex items-center text-gray-600 mt-1">
+                  <i class="ri-time-line mr-2"></i>
+                  <input type="time" value="18:00" class="time-input text-gray-700 border-none">
+                </div>
+              </div>
+              <div class="flex space-x-2">
+                <button class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full">
+                  <i class="ri-drag-move-line text-gray-600"></i>
+                </button>
+                <div class="relative">
+                  <button class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full emoji-toggle">
+                    <i class="ri-emotion-happy-line text-gray-600"></i>
+                  </button>
+                  <div class="emoji-picker hidden">
+                    <button class="emoji-btn">😊</button>
+                    <button class="emoji-btn">🌴</button>
+                    <button class="emoji-btn">🏖️</button>
+                    <button class="emoji-btn">🍹</button>
+                    <button class="emoji-btn">🏄</button>
+                    <button class="emoji-btn">🚶</button>
+                    <button class="emoji-btn">🍽️</button>
+                    <button class="emoji-btn">🛌</button>
+                    <button class="emoji-btn">🚗</button>
+                    <button class="emoji-btn">📸</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <div class="flex items-center mb-2">
+                <i class="ri-map-pin-line mr-2 text-primary"></i>
+                <span class="text-gray-700">Campuhan Ridge Walk</span>
+              </div>
+              <textarea placeholder="Add notes here..."
+                class="w-full h-24 p-3 bg-gray-50 border-none rounded text-gray-700 resize-none focus:ring-2 focus:ring-primary focus:outline-none">Take an evening walk along the ridge for stunning sunset views. The path is easy but bring comfortable shoes. Great photo opportunity of rice fields and valleys.</textarea>
+            </div>
+            <div class="flex justify-between items-center">
+              <div class="flex items-center">
+                <label class="custom-switch mr-3">
+                  <input type="checkbox">
+                  <span class="slider"></span>
+                </label>
+                <span class="text-sm text-gray-600">Reminder</span>
+              </div>
+              <div class="flex space-x-2">
+                <button class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full">
+                  <i class="ri-attachment-2 text-gray-600"></i>
+                </button>
+                <button class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full">
+                  <i class="ri-delete-bin-line text-gray-600"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Card 5 -->
+        <div class="planner-card rounded-xl overflow-hidden w-full">
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <h3 class="text-lg font-semibold">Dinner & Cultural Show</h3>
+                <div class="flex items-center text-gray-600 mt-1">
+                  <i class="ri-time-line mr-2"></i>
+                  <input type="time" value="20:00" class="time-input text-gray-700 border-none">
+                </div>
+              </div>
+              <div class="flex space-x-2">
+                <button class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full">
+                  <i class="ri-drag-move-line text-gray-600"></i>
+                </button>
+                <div class="relative">
+                  <button class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full emoji-toggle">
+                    <i class="ri-emotion-happy-line text-gray-600"></i>
+                  </button>
+                  <div class="emoji-picker hidden">
+                    <button class="emoji-btn">😊</button>
+                    <button class="emoji-btn">🌴</button>
+                    <button class="emoji-btn">🏖️</button>
+                    <button class="emoji-btn">🍹</button>
+                    <button class="emoji-btn">🏄</button>
+                    <button class="emoji-btn">🚶</button>
+                    <button class="emoji-btn">🍽️</button>
+                    <button class="emoji-btn">🛌</button>
+                    <button class="emoji-btn">🚗</button>
+                    <button class="emoji-btn">📸</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <div class="flex items-center mb-2">
+                <i class="ri-map-pin-line mr-2 text-primary"></i>
+                <span class="text-gray-700">Lotus Garden Restaurant</span>
+              </div>
+              <textarea placeholder="Add notes here..."
+                class="w-full h-24 p-3 bg-gray-50 border-none rounded text-gray-700 resize-none focus:ring-2 focus:ring-primary focus:outline-none">Reserved table for 2 with view of the stage. Traditional Legong dance performance starts at 8:30pm. Dress code: smart casual. Reservation under name "Alexander".</textarea>
+            </div>
+            <div class="flex justify-between items-center">
+              <div class="flex items-center">
+                <label class="custom-switch mr-3">
+                  <input type="checkbox" checked>
+                  <span class="slider"></span>
+                </label>
+                <span class="text-sm text-gray-600">Reminder</span>
+              </div>
+              <div class="flex space-x-2">
+                <button class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full">
+                  <i class="ri-attachment-2 text-gray-600"></i>
+                </button>
+                <button class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full">
+                  <i class="ri-delete-bin-line text-gray-600"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Add New Card -->
+        <div
+          class="border-2 border-dashed border-gray-300 rounded-xl flex items-center justify-center h-64 cursor-pointer hover:border-primary transition-colors">
+          <div class="text-center">
+            <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-3">
+              <i class="ri-add-line ri-lg text-primary"></i>
+            </div>
+            <p class="text-gray-600">Add New Activity</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Features Section -->
+  <section id="end" class="min-h-screen py-16 px-6 flex items-center">
+    <div class="max-w-7xl w-full mx-auto">
+      <div class="text-center mb-12 px-4">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Smart Travel Planning</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">Our intelligent features help you create the perfect itinerary with
+          minimal effort</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
+        <div class="text-center p-6">
+          <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="ri-map-2-line ri-2x text-primary"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Interactive Maps</h3>
+          <p class="text-gray-600">Visualize your entire journey with our interactive maps. Plan routes efficiently and
+            discover nearby attractions.</p>
+        </div>
+        <div class="text-center p-6">
+          <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="ri-ai-generate ri-2x text-primary"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">AI Recommendations</h3>
+          <p class="text-gray-600">Get personalized suggestions based on your preferences, travel history, and current
+            trends.</p>
+        </div>
+        <div class="text-center p-6">
+          <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="ri-group-line ri-2x text-primary"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Group Planning</h3>
+          <p class="text-gray-600">Collaborate with friends and family in real-time. Everyone can contribute to create
+            the perfect shared itinerary.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- CTA Section -->
+  <section id="price" class="min-h-screen py-16 px-6 bg-gradient-to-r from-primary to-secondary text-white flex items-center">
+    <div class="max-w-7xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Plan Your Next Adventure?</h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">Join thousands of travelers who are creating unforgettable journeys with
+        our smart planning tools.</p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <button
+          class="px-8 py-3 bg-white text-primary font-semibold rounded-full shadow-lg hover:shadow-xl transition-shadow !rounded-button whitespace-nowrap">Get
+          Started Free</button>
+        <button
+          class="px-8 py-3 bg-transparent border-2 border-white font-semibold rounded-full hover:bg-white hover:bg-opacity-10 transition-colors !rounded-button whitespace-nowrap">Watch
+          Demo</button>
+      </div>
+    </div>
+  </section>
+  <!-- Footer -->
+  <footer class="py-12 px-6 bg-white mt-auto">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row justify-between items-center mb-8 px-4">
+        <a href="#" class="text-2xl font-['Pacifico'] text-primary mb-6 md:mb-0">PlanVoyage</a>
+        <div class="flex flex-wrap justify-center gap-6">
+          <a href="#home" class="text-gray-600 hover:text-primary transition-colors">Home</a>
+          <a href="#home" class="text-gray-600 hover:text-primary transition-colors">Features</a>
+          <a href="#price" class="text-gray-600 hover:text-primary transition-colors">Pricing</a>
+          <a href="#plan" class="text-gray-600 hover:text-primary transition-colors">Blog</a>
+          <a href="#end" class="text-gray-600 hover:text-primary transition-colors">About</a>
+          <a href="#end" class="text-gray-600 hover:text-primary transition-colors">Contact</a>
+        </div>
+        <div class="flex space-x-4 mt-6 md:mt-0">
+          <a href="#"
+            class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full text-gray-600 hover:bg-primary hover:text-white transition-colors">
+            <i class="ri-instagram-line"></i>
+          </a>
+          <a href="#"
+            class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full text-gray-600 hover:bg-primary hover:text-white transition-colors">
+            <i class="ri-twitter-x-line"></i>
+          </a>
+          <a href="#"
+            class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full text-gray-600 hover:bg-primary hover:text-white transition-colors">
+            <i class="ri-facebook-fill"></i>
+          </a>
+          <a href="#"
+            class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full text-gray-600 hover:bg-primary hover:text-white transition-colors">
+            <i class="ri-youtube-line"></i>
+          </a>
+        </div>
+      </div>
+      <div class="border-t border-gray-200 pt-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <p class="text-gray-500 text-sm mb-4 md:mb-0">+91 84469 92405 © 2025 PlanVoyage. All rights reserved.</p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="#" class="text-gray-500 text-sm hover:text-primary transition-colors">Privacy Policy</a>
+            <a href="#" class="text-gray-500 text-sm hover:text-primary transition-colors">Terms of Service</a>
+            <a href="#" class="text-gray-500 text-sm hover:text-primary transition-colors">Cookie Policy</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+ 
+  <script src="script.js"></script>
+  <script src="funciotion.js"></script>
+</body>
+
+</html>
